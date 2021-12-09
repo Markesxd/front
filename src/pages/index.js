@@ -1,9 +1,9 @@
-import Home from './home';
-import Medico from './medico';
-import Gerente from './gerente';
+import { Home } from './home';
+import { Doctor } from './doctor';
+import { Manager } from './manager';
 
 export {
-    Home,
-    Medico,
-    Gerente
-}
+  Home,
+  Doctor,
+  Manager,
+};
