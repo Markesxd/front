@@ -1,0 +1,37 @@
+h1 {
+    margin-left: 1rem;
+}
+
+.form {
+    display: flex;
+    flex-direction: row;
+    justify-items: center;
+    align-items: center;
+    border-bottom: 1px solid #cecece;
+    padding-bottom: 3rem;
+
+    button{
+        margin-left: 1rem;
+    }
+
+    span {
+        margin: 1rem;
+    }
+}
+
+.reportBox{
+    max-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    overflow-y: scroll;
+    scrollbar-width: none;
+
+    .boxTitle{
+        margin: 3rem 0 1rem 4rem;
+    }
+}
+
+.reportBox::-webkit-scrollbar {
+    display: none;
+}
