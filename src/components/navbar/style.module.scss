@@ -1,25 +1,25 @@
-.nav{
-    border-bottom: solid 1px #cecece;
-    background: #efefef;
+.nav {
+  border-bottom: solid 1px #cecece;
+  background: #efefef;
 
-    img{
-        height: 1rem;
-        margin: 1rem;
-        display: inline;
-    }
+  img {
+    height: 1rem;
+    margin: 1rem;
+    display: inline;
+  }
 
-    ul{
-        float: right;
-        display: flex;
-        padding-right: 1.5rem;
-        margin-top: 0;
-        justify-content: flex-end;
-        align-items: center;
-        li{
-            margin: 1rem 1rem;
-            list-style: none;
-            text-decoration: none;
-            color: red;
-        }
+  ul {
+    float: right;
+    display: flex;
+    padding-right: 1.5rem;
+    margin-top: 0;
+    justify-content: flex-end;
+    align-items: center;
+    li {
+      margin: 1rem 1rem;
+      list-style: none;
+      text-decoration: none;
+      color: red;
     }
+  }
 }

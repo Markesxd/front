@@ -1,74 +1,121 @@
 import { useState } from 'react';
 import { FiSearch } from 'react-icons/fi';
+import { MdNoteAdd } from 'react-icons/md';
+import { TextArea } from '../../components/textArea/TextArea';
 import style from './style.module.scss';
+
+// Dados Banco
+// data date NOT NULL,
+// motivo text,
+// sintomas varchar(255),
+// diagnostico varchar(255),
+// retorno date,
+// anotacoes text,
+// cpf_paciente varchar(20),
+// cpf_medico varchar(20),
+//
 
 const Doctor = () => {
   const [description, setDescription] = useState('');
   const [findPatient, setFindPatient] = useState('');
+  const [patient, setPatient] = useState('');
   const [findDoctor, setFindDoctor] = useState('');
-
+  const [doctor, setDoctor] = useState('');
+  const [returnRequired, setReturnRequired] = useState(false);
   const handleSearchDoctor = () => {
-    alert(findDoctor);
+    // query buscar doutor
+    // const data = null; // result query
+    const data = { name: 'Diener', especially: 'Cardiologista', crm: '324234/MG' }; // result query
+
+    if (data) {
+      setDoctor(data);
+    } else {
+      alert('Médico Não Encontrado');
+    }
   };
   const handleSearchPatient = () => {
-    alert(findPatient);
+    // query buscar paciente
+    // const data = null; // result query
+    const data = {
+      name: 'Diener', birthDate: 22, healthPlan: 'Unimed', historical: 'link',
+    }; // result query
+
+    if (data) {
+      setPatient(data);
+    } else {
+      alert('Paciente Não Encontrado');
+    }
   };
   const handleSend = () => {
+    const date = new Date();
     alert('send');
   };
 
   return (
-    <div>
-      <div className={style.container}>
-        <h1>Pagina do Doctor</h1>
-        {/* Buscar Médico e Paciente */}
-        <div className="headerWrapper">
-          <span>CPF Médico</span>
+    <div className={style.container}>
+      <h1>Pagina do Doctor</h1>
+      {/* Buscar Médico e Paciente */}
+      <div className={style.findWrapper}>
+        <div className={style.doctor}>
+          <span>Buscar Médico: </span>
           <input type="text"
-            placeholder="Buscar medico"
+            placeholder="Digite o CPF"
             onChange={(e) => setFindDoctor(e.target.value)}
           />
           <button type='submit' onClick={handleSearchDoctor}>
-            <FiSearch/>
+            <FiSearch fontSize={13}/>
           </button>
+          {doctor && (
+          <div>Medico-------------------------------</div>
+          )}
+        </div>
 
-          <span>CPF Paciente</span>
+        <div className='patient'>
+          <span>Buscar Paciente: </span>
           <input type="text"
-            placeholder="Buscar paciente"
+            placeholder="Digite o CPF "
             onChange={(e) => setFindPatient(e.target.value)}
           />
           <button type="submit" onClick={handleSearchPatient}>
-            <FiSearch fontSize={16}/>
+            <FiSearch fontSize={13}/>
           </button>
-
-          <input type="date" name="" id="" />
+          {patient && (
+          <div>Paciente--------------------------</div>
+          )}
         </div>
-        {/* Fim Div Buscar Paciente e Médico */}
+        {/* Exibir Info Users */}
 
-        {/* Inicio Div Descrição Consulta */}
-        <div className={style.description}>
-          <textarea
-            name="" id=""
-            cols="50" rows="10"
-            placeholder="Descrição"
-            onChange={(event) => setDescription(event.target.value)}
-            />
-          <textarea
-            name="" id=""
-            cols="50" rows="10"
-            placeholder="Descrição"
-            onChange={(event) => setDescription(event.target.value)}
-            />
-          <textarea
-            name="" id=""
-            cols="50" rows="10"
-            placeholder="Descrição"
-            onChange={(event) => setDescription(event.target.value)}
-            />
-        </div>
-        {/* Fim Div Descrição Consulta */}
-        <button type="button" onClick={handleSend}>Criar</button>
       </div>
+      {/* Fim Div Buscar Paciente e Médico */}
+
+      {/* Inicio Div Descrição Consulta */}
+      <div className={style.descriptionWrapper}>
+
+        {/* Inicio div check Retorno */}
+        <div className={style.requiredReturn}>
+          <span>
+            Necessário Retorno
+          </span>
+          <input type="checkbox" name="haveReturn"
+                onChange={() => setReturnRequired(!returnRequired)} />
+          {returnRequired && (<input type="date" name="return" id="" />)}
+        </div>
+        {/* Fim div check Retorno */}
+        <div className={style.groupDescription}>
+          <TextArea title="Descrição" id='Description'/>
+          <TextArea title="Diagnóstico" id='Diagnostic'/>
+        </div>
+        <div className={style.groupDescription}>
+
+          <TextArea title="Sintomas" id='symptoms'></TextArea>
+          <TextArea title="Motivos" id='reasons'></TextArea>
+        </div>
+      </div>
+      {/* Fim Div Descrição Consulta */}
+
+      <button className={style.btnSend}type="submit" onClick={handleSend}>
+        Adicionar  <MdNoteAdd/>
+      </button>
     </div>
   );
 };

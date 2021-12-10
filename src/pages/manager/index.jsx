@@ -21,9 +21,11 @@ const Manager = () => {
   const handleGenerate = () => {
     const formatedInitial = initial.replace(/-/g, '');
     const formatedFinal = final.replace(/-/g, '');
+
     api.get(`/relatorio/tempo/${formatedInitial}/${formatedFinal}`)
       .then(({ data }) => {
         console.log(formatedInitial, formatedFinal, data);
+
         setPatients(data.Atendimentos);
         setDoctors(data.Medicos);
         setAttendances(data.Atendimentos);
