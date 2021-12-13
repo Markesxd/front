@@ -88,8 +88,8 @@ const Doctor = () => {
           </button>
           {doctor && (
             <div className={style.infoUser}>
-              <span>Nome: {doctor.name}</span>
-              <span>Especialidade: {doctor.especially}</span>
+              <span>Nome: {doctor.nome}</span>
+              <span>Especialidade: {doctor.especialidade}</span>
               <span>CRM: {doctor.crm}</span>
             </div>
           )}
@@ -106,9 +106,9 @@ const Doctor = () => {
           </button>
           {patient && (
             <div className={style.infoUser}>
-              <span>Nome: {doctor.name}</span>
+              <span>Nome: {doctor.nome}</span>
               <span>Idade: {patient.age}</span>
-              <span>Plano de Saúde: {patient.healthPlan}</span>
+              <span>Plano de Saúde: {patient.planoSaude}</span>
               <span>Prontuario: <a href={patient.historical} target="_blank" rel="noopener noreferrer">Aqui</a></span>
 
             </div>
