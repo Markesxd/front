@@ -30,50 +30,46 @@ const Doctor = () => {
   const [diagnostic, setDiagnostic] = useState('');
   const [reasons, setReasons] = useState('');
   const [dateReturn, setDateReturn] = useState();
-  const [dateNow, setDateNow] = useState('');
+  const [dateNow, setDateNow] = useState(Date);
   //  fim state consulta
   const [returnRequired, setReturnRequired] = useState(false);
   const handleSearchDoctor = () => {
-    // query buscar doutor
-    // const data = null; // result query
-    const data = { name: 'Diener', especially: 'Cardiologista', crm: '324234/MG' }; // result query
-    alert(findDoctor);
-    if (data) {
-      setDoctor(data);
-    } else {
-      alert('Médico Não Encontrado');
-    }
+    api.get(`/medico/${findDoctor}`).then(({ data }) => {
+      if (data) {
+        setDoctor(data);
+      } else {
+        alert('Médico Não Encontrado');
+      }
+    });
   };
   const handleSearchPatient = () => {
     // query buscar paciente
     // const data = null; // result query
-    api.get(`/atendimento/${findPatient}`).then(({ data }) => setFindPatient(data));
-    alert(findPatient);
-    const data = {
-      name: 'Diener', age: 22, healthPlan: 'Unimed', historical: 'link',
-    }; // result query
-
-    if (data) {
-      setPatient(data);
-    } else {
-      alert('Paciente Não Encontrado');
-    }
+    console.log(findPatient);
+    api.get(`/paciente/${findPatient}`).then(({ data }) => {
+      if (data) {
+        setPatient(data);
+      } else {
+        alert('Paciente Não Encontrado');
+      }
+    });
   };
   const handleSend = () => {
+    const date = new Date();
     setDateNow(new Date());
+    console.log(dateNow);
     const dataSend = {
-      doctor,
-      patient,
-      description,
-      symptoms,
-      reasons,
-      diagnostic,
-      dateNow,
-      dateReturn,
+      cpf_medico: doctor.cpf_medico,
+      cpf_paciente: patient.cpf_paciente,
+      anotacoes: description,
+      sintomas: symptoms,
+      motivo: reasons,
+      diagnostico: diagnostic,
+      data: `${date.getFullYear()}/${date.getMonth()}/${date.getDay()}`,
+      retorno: dateReturn,
     };
     api.post('/atendimento', dataSend).then(({ data }) => console.log(data));
     console.log(dataSend);
-    alert(`${dataSend.doctor.name} - ${dataSend.patient.name} - ${dataSend.reasons} - ${dataSend.diagnostic} - ${dataSend.description} - ${dataSend.symptoms}`);
   };
 
   return (
