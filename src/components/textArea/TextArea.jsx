@@ -1,6 +1,6 @@
 import styles from './style.module.scss';
 /* eslint-disable react/prop-types */
-const TextArea = ({ title, id }) => {
+const TextArea = ({ title, id, setChange }) => {
   return (
     <div className={styles.container}>
 
@@ -10,7 +10,7 @@ const TextArea = ({ title, id }) => {
       id={id}
       cols="60" rows="15"
       placeholder={title}
-      // onChange={(event) => setDescription(event.target.value)}
+      onChange={(e) => setChange(e.target.value)}
       />
       </div>
     </div>
