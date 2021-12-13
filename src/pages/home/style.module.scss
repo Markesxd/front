@@ -1,3 +1,37 @@
 .container {
-  color: aqua;
+  color: white;
+  
+  h1{
+    margin: 0;
+    font-size: 5rem;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #000;
+  }
+
+  .homeImage{
+    background: url('../../img/doctor-gebe7661f0_1920.jpg');
+    width: 100vw;
+    height: 50vh;
+
+    div{
+      display:flex;
+      justify-content: center;
+      align-items: center;
+      background: rgba(0,0,0,0.3);
+      width: 100vw;
+      height: 50vh;
+    }
+  }
+
+  table{
+    color: black;
+    td{
+      width: 50vw;
+      
+      img{
+        width: 100%;
+      }
+    }
+  }
+
 }

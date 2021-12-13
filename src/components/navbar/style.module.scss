@@ -2,6 +2,17 @@
   border-bottom: solid 1px #cecece;
   background: #efefef;
 
+  a{
+    color: black;
+    text-decoration: none;
+    font-weight: bolder;
+  }
+
+  a:hover{
+    color: #2A70AE;
+    text-decoration: underline;
+  }
+
   img {
     height: 1rem;
     margin: 1rem;
@@ -16,7 +27,8 @@
     justify-content: flex-end;
     align-items: center;
     li {
-      margin: 1rem 1rem;
+      margin-right: 1rem;
+      margin-top: 1rem;
       list-style: none;
       text-decoration: none;
       color: red;
